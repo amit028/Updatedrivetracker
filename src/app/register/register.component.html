@@ -1,0 +1,88 @@
+
+<mat-card>
+    <mat-card-title>SignUp</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="Signupform" (ngSubmit)="submit()">
+
+    
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input  matInput  formControlName="username">
+      <mat-error *ngIf="Signupform.get('username').errors?.required">
+        Username is required
+  </mat-error>
+    </mat-form-field>
+       
+  </p>
+  
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input  matInput  formControlName="ppassword">
+      <mat-error *ngIf="Signupform.get('ppassword').errors?.required">
+        Password is required
+        </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input  matInput  formControlName="Conpassword">
+      <mat-error *ngIf="Signupform.get('Conpassword').errors?.required  ">
+        Confirm Password is required
+        </mat-error>
+        <mat-error *ngIf="Signupform.get('Conpassword').errors?.minLength">
+          Password is Minimum length is 8
+        </mat-error>
+       
+    </mat-form-field>
+  </p>
+   
+  
+  
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input  matInput  formControlName="email">
+      <mat-error *ngIf="Signupform.get('email').errors?.required">
+        email is required
+    </mat-error>
+    </mat-form-field>
+    
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Mobile number</mat-label>
+      <input  matInput  formControlName="Mobilenum">
+      <mat-error *ngIf="Signupform.get('Mobilenum').errors?.required">
+        Mobile Number is required
+    </mat-error>
+    </mat-form-field>
+   
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Birth date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="Bdate" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="Signupform.get('Bdate').errors?.required">
+            Birth Date is required
+            </mat-error>
+    </mat-form-field>
+   
+  </p>
+  
+  
+ 
+  
+  
+  <div class="button">
+    <button [disabled]="!Signupform.valid" type="submit"  mat-raised-button color="primary"> Sign Up</button>
+  </div>
+  
+  </form>
+  </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,58 @@
+<br><br><br>
+
+  
+     <mat-form-field>
+        <mat-label>Select Company  Name</mat-label>
+          <mat-select  [(value)]="selectedcompany">
+              
+              <mat-option *ngFor="let c of data" [value]='c.companyname'>
+                 {{c.companyname | titlecase}}
+                </mat-option>
+          </mat-select>
+       </mat-form-field>
+  
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Company Name</th>
+            <th>Resource</th>
+            <th>Experiance</th>
+            <th>CTC</th>
+            <th>Position</th>
+            <th>Joining Criteria</th>
+            <th>Education Criteria</th>
+            <th>Followup</th>
+            <th>Bond</th>
+            <th>GSTNo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let d of data">
+           
+            <tr *ngIf=" selectedcompany=='all'  ||  selectedcompany==d.companyname ">
+                <td>{{d.id}}</td>
+                <td>{{d.companyname | titlecase}}</td>
+                <td>{{d.resource}}</td>
+                <td>{{d.exp}}</td>
+                <td>{{d.ctc}}</td>
+                <td>{{d.position |custpipe:d.position}}</td>
+                <td>{{d.joining |joining:d.joining}}</td>
+                <td>{{d.education |education:d.education}}</td>
+                <td>{{d.followup}}</td>
+                <td>{{d.bond}}</td>
+                <td>{{d.gstno}}</td>
+                <td>
+                    <button type="submit" class="btn btn-primary" (click)="updateData(d.id)">Edit</button> &nbsp;
+                    <button type="submit" class="btn btn-danger" (click)="deleteData(d.id)">Delete</button>
+                </td>
+            </tr>
+           
+           
+
+        </ng-container>
+    </tbody>
+</table>
+
+
